@@ -19,10 +19,12 @@
     "gulp-concat": "^2.6.1",
     "gulp-less": "^3.3.2",
     "gulp-minify-css": "^1.2.4",
+    "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "less": "^2.7.2",
     "tsify": "^3.0.1",
     "typescript": "^2.4.2",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.9.0"
   },

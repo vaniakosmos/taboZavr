@@ -9,15 +9,9 @@ const source = require('vinyl-source-stream');
 const watchify = require("watchify");
 const tsify = require("tsify");
 const gutil = require("gulp-util");
+const uglify = require('gulp-uglify');
+const buffer = require('vinyl-buffer');
 
-
-gulp.task('less', function () {
-    return gulp.src('./src/less/**/*.less')
-        .pipe(less())
-        .pipe(concat('app.css'))
-        .pipe(minify())
-        .pipe(gulp.dest('./build/css'));
-});
 
 const watchedBrowserify = watchify(browserify({
     basedir: '.',
@@ -31,15 +25,26 @@ function bundle() {
     return watchedBrowserify
         .bundle()
         .pipe(source('app.js'))
+        .pipe(buffer())
+        .pipe(uglify())
         .pipe(gulp.dest("build/js"));
 }
-
-gulp.task('watch', function() {
-    gulp.watch('./src/less/**/*.less', ['less']);
-});
 
 gulp.task("browserify", bundle);
 watchedBrowserify.on("update", bundle);
 watchedBrowserify.on("log", gutil.log);
+
+
+gulp.task('less', function () {
+    return gulp.src('./src/less/**/*.less')
+        .pipe(less())
+        .pipe(concat('app.css'))
+        .pipe(minify())
+        .pipe(gulp.dest('./build/css'));
+});
+
+gulp.task('watch', function () {
+    gulp.watch('./src/less/**/*.less', ['less']);
+});
 
 gulp.task('default', ['watch', 'browserify']);
