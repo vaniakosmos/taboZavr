@@ -1,0 +1,33 @@
+{
+  "name": "TaboZavr",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "chrome",
+    "extension"
+  ],
+  "author": "VanyaKosmos",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jquery": "^3.2.9",
+    "css-loader": "^0.28.4",
+    "grunt": "^1.0.1",
+    "grunt-contrib-cssmin": "^2.2.0",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-uglify": "^3.0.1",
+    "grunt-typescript": "^0.8.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "style-loader": "^0.18.2",
+    "ts-loader": "^2.3.1",
+    "typescript": "^2.4.2",
+    "webpack": "^3.3.0"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
