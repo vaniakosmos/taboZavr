@@ -3,3 +3,5 @@ package-lock.json
 *.*.map
 build/js/app.js
 build/css/app.css
+todo.txt
+build/**/vendors

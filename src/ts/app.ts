@@ -1,8 +1,16 @@
-import hurma from './utils';
+import themer from './theme'
+import ui from './ui'
+import {Logger} from './utils'
 
-const body2 = $('body');
 
-console.log('worked or not?');
+const logger = new Logger('app');
+logger.log('inside');
 
-body2.append(hurma('not kek but hurma'));
-body2.addClass('lel');
+themer.load()
+    // .then(() => themer.save())
+    // .then(() => themer.load())
+    .then(function (theme) {
+        logger.log(theme);
+        ui.applyTheme(theme)
+    });
+
