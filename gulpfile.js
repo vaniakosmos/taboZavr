@@ -11,15 +11,21 @@ const tsify = require("tsify");
 const gutil = require("gulp-util");
 const uglify = require('gulp-uglify');
 const buffer = require('vinyl-buffer');
+const babelify = require('babelify');
 
-
-const watchedBrowserify = watchify(browserify({
+const browserifyConfig = {
     basedir: '.',
     debug: true,
     entries: ['./src/ts/app.ts'],
+    extensions: ['.js', '.ts', '.json'],
     cache: {},
     packageCache: {}
-}).plugin(tsify));
+};
+const watchedBrowserify = watchify(
+    browserify(browserifyConfig)
+        .plugin(tsify, {target: 'es6'})
+        .transform(babelify.configure({extensions: ['.js', '.ts', '.json']}))
+);
 
 function bundle() {
     return watchedBrowserify

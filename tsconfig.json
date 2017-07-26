@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es5",
-//    "module": "amd",
-    "removeComments": true,
-    "preserveConstEnums": true,
-//    "outFile": "./build/js/app.js",
+    "target": "es2015",
+    "module": "commonjs",
     "sourceMap": true,
+    "noImplicitAny": true,
     "skipLibCheck": true
   }
 }
