@@ -1,13 +1,43 @@
 .search-container {
-    width: 90%;
+    width: 40%;
     margin: 0 auto;
 
-    .padding {
-        @pad: 5rem;
-        padding: 3rem @pad 0 @pad;
+    form {
+        text-align: left;
+        margin-top: 10px;
     }
 }
 
+.uk-inline, .uk-form-width-large {
+    width: 100%;
+}
+
 #search {
-    background: #00bc00;
+    font-size: 1rem;
+}
+
+#engines {
+    input[type="radio"] {
+        display: none;
+    }
+
+    input[type="radio"]:checked + span {
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    span:hover {
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+}
+
+.uk-badge {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
+#search {
+    outline-color: black;
+    border: none;
 }

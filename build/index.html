@@ -5,39 +5,112 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="js/vendors/jquery.js"></script>
+    <link rel="stylesheet" href="css/vendors/uikit.min.css" />
+    <script src="js/vendors/uikit.min.js"></script>
+    <script src="js/vendors/uikit-icons.min.js"></script>
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 
-<div class="nav-container">
-    <div id="nav">
-        nav
+<div class="uk-offcanvas-content">
+    <!--nav bar-->
+    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a>History</a>
+                </li>
+                <li>
+                    <a>Bookmarks</a>
+                </li>
+                <li>
+                    <a href="#">Apps <span uk-icon="icon: chevron-down"></span></a>
+                    <div class="uk-border-rounded" uk-dropdown="pos: top-right; mode: click; duration: 100">
+                        <ul id="apps" class="uk-nav uk-dropdown-nav">
+                            <li><a href="#">app1</a></li>
+                            <li><a href="#">app2</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a id="extensions">Extensions</a>
+                </li>
+                <li>
+                    <a id="options-toggle" class="uk-navbar-toggle" uk-toggle="target: #offcanvas-flip">
+                        <span uk-navbar-toggle-icon></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/nav bar-->
+
+    <!--options-->
+    <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: false; mode: push">
+        <div class="uk-offcanvas-bar">
+
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+            <h3>Title</h3>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+        </div>
     </div>
+    <!--/options-->
 </div>
 
-<div class="container">
+<div class="content">
+    <!--header-->
     <div class="title-container">
         <div class="padding">
-            <div id="title">
+            <div id="title" >
                 Search
             </div>
         </div>
     </div>
+    <!--/header-->
 
-    <form class="search-container">
-        <div class="padding">
-            <label>
-                <input id="search" type="text"/>
-            </label>
-        </div>
-
-    </form>
-
-    <div class="tabs-container">
-        <div id="tabs">
-            tabs
+    <!--search-->
+    <div class="uk-margin">
+        <div class="search-container">
+            <form id="engines">
+                <label>
+                    <input type="radio" name="engine" value="google" checked>
+                    <span class="uk-badge">google</span>
+                </label>
+                <label>
+                    <input type="radio" name="engine" value="google">
+                    <span class="uk-badge">trakt</span>
+                </label>
+            </form>
+            <form class="uk-inline">
+                <label>
+                    <a class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search"></a>
+                    <input id="search" class="uk-input uk-form-width-large uk-border-rounded" type="text" placeholder="search...">
+                </label>
+            </form>
         </div>
     </div>
+    <!--/search-->
+
+    <!--tabs-->
+    <div class="tabs-container">
+        <div id="tabs">
+            <ul class="uk-child-width-expand" uk-tab uk-switcher>
+                <li class="uk-active"><a href="#">Fav</a></li>
+                <li><a href="#">Top</a></li>
+                <li><a href="#">Recent</a></li>
+            </ul>
+            <ul class="uk-switcher uk-margin">
+                <li>fav</li>
+                <li>top</li>
+                <li>recent</li>
+            </ul>
+        </div>
+    </div>
+    <!--/tabs-->
 </div>
 
 
