@@ -1,5 +1,10 @@
+@import (reference) "variables";
+
 html, body {
     height: 100%;
+    //background: url("https://c1.staticflickr.com/9/8233/8492465630_e1f4ec94d7_b.jpg") no-repeat center center fixed;
+    //background-size: cover;
+    background: #a8a8a8;
 }
 
 body {
@@ -11,9 +16,14 @@ body {
 }
 
 .uk-border-rounded {
-    border-radius: 3px;
+    border-radius: @global-card-radius;
 }
 
 .content {
     text-align: center;
+}
+
+.uk-card-body {
+    background: @global-bg;
+    box-shadow: none;
 }

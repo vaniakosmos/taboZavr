@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="js/vendors/jquery.js"></script>
-    <link rel="stylesheet" href="css/vendors/uikit.min.css" />
+    <link rel="stylesheet" href="css/vendors/uikit.min.css"/>
     <script src="js/vendors/uikit.min.js"></script>
     <script src="js/vendors/uikit-icons.min.js"></script>
     <link rel="stylesheet" href="css/app.css">
@@ -53,8 +53,11 @@
 
             <h3>Title</h3>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+            </p>
 
         </div>
     </div>
@@ -65,7 +68,7 @@
     <!--header-->
     <div class="title-container">
         <div class="padding">
-            <div id="title" >
+            <div id="title">
                 Search
             </div>
         </div>
@@ -73,8 +76,8 @@
     <!--/header-->
 
     <!--search-->
-    <div class="uk-margin">
-        <div class="search-container">
+    <div class="search-container uk-card uk-card-body uk-card-default uk-border-rounded">
+        <div class="uk-margin">
             <form id="engines">
                 <label>
                     <input type="radio" name="engine" value="google" checked>
@@ -88,7 +91,8 @@
             <form class="uk-inline">
                 <label>
                     <a class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search"></a>
-                    <input id="search" class="uk-input uk-form-width-large uk-border-rounded" type="text" placeholder="search...">
+                    <input id="search" class="uk-input uk-form-width-large uk-border-rounded" type="text"
+                           placeholder="search...">
                 </label>
             </form>
         </div>
@@ -96,7 +100,7 @@
     <!--/search-->
 
     <!--tabs-->
-    <div class="tabs-container">
+    <div class="tabs-container uk-card uk-card-body uk-card-default uk-border-rounded">
         <div id="tabs">
             <ul class="uk-child-width-expand" uk-tab uk-switcher>
                 <li class="uk-active"><a href="#">Fav</a></li>
@@ -104,7 +108,42 @@
                 <li><a href="#">Recent</a></li>
             </ul>
             <ul class="uk-switcher uk-margin">
-                <li>fav</li>
+                <li>
+                    <a class="tab-tile">
+                        <div class="tab-container">
+                            <div class="tab-favicon">
+                                <!--<img src="" title="">-->
+                                <span uk-icon="icon: heart"></span>
+                            </div>
+                            <div class="tab-title">placeholder</div>
+                        </div>
+                    </a>
+                    <a class="tab-tile">
+                        <div class="tab-container">
+                            <div class="tab-favicon">
+                                <!--<img src="" title="">-->
+                                <span uk-icon="icon: heart"></span>
+                            </div>
+                            <div class="tab-title">placeholder placeholder</div>
+                        </div>
+                    </a><a class="tab-tile">
+                    <div class="tab-container">
+                        <div class="tab-favicon">
+                            <!--<img src="" title="">-->
+                            <span uk-icon="icon: heart"></span>
+                        </div>
+                        <div class="tab-title">placeholder placeholder</div>
+                    </div>
+                </a><a class="tab-tile">
+                    <div class="tab-container">
+                        <div class="tab-favicon">
+                            <!--<img src="" title="">-->
+                            <span uk-icon="icon: heart"></span>
+                        </div>
+                        <div class="tab-title">placeholder placeholder placeholder</div>
+                    </div>
+                </a>
+                </li>
                 <li>top</li>
                 <li>recent</li>
             </ul>

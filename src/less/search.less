@@ -1,6 +1,14 @@
+@import (reference) "variables";
+
 .search-container {
-    width: 40%;
-    margin: 0 auto;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0.2;
+    &:hover {
+        opacity: 1;
+    }
+    width: 60%;
+    margin: 60px auto 0 auto;
+    background: none;
 
     form {
         text-align: left;
@@ -13,31 +21,33 @@
 }
 
 #search {
+
+    @border: 1px;
+    border: @border solid white;
     font-size: 1rem;
+    color: black;
+
+    &:focus {
+        opacity: 1;
+        border: @border dotted black;
+    }
+    transition: none;
 }
 
 #engines {
     input[type="radio"] {
         display: none;
-    }
 
-    input[type="radio"]:checked + span {
-        background: rgba(0, 0, 0, 0.6);
+        &:checked + span {
+            background: rgba(0, 0, 0, 0.6);
+        }
     }
-
     span:hover {
         cursor: pointer;
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.3);
     }
-
-}
-
-.uk-badge {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 3px;
-}
-
-#search {
-    outline-color: black;
-    border: none;
+    .uk-badge {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: @global-card-radius;
+    }
 }
