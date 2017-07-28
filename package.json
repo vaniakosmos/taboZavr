@@ -14,6 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/chrome": "0.0.47",
+    "@types/handlebars": "^4.0.35",
     "@types/jquery": "^3.2.9",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",

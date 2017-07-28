@@ -4,11 +4,24 @@
     <title>New Tab</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="js/vendors/jquery.js"></script>
     <link rel="stylesheet" href="css/vendors/uikit.min.css"/>
+    <script src="js/vendors/jquery.js"></script>
     <script src="js/vendors/uikit.min.js"></script>
     <script src="js/vendors/uikit-icons.min.js"></script>
+    <script src="js/vendors/handlebars.min.js"></script>
     <link rel="stylesheet" href="css/app.css">
+
+    <!--templates-->
+    <script id="app-template" type="text/x-handlebars-template">
+        <li>
+            <a title="{{name}}" uk-tooltip>
+                <img src="{{icon}}" class="app-icon" alt="all"/>
+                <!--<span class="app-icon" style="background-image: url({{icon}});"></span>-->
+                <span>{{name}}</span>
+            </a>
+        </li>
+    </script>
+    <!--/templates-->
 </head>
 <body>
 
@@ -18,18 +31,16 @@
         <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
                 <li>
-                    <a>History</a>
+                    <a id="history">History</a>
                 </li>
                 <li>
-                    <a>Bookmarks</a>
+                    <a id="bookmarks">Bookmarks</a>
                 </li>
                 <li>
                     <a href="#">Apps <span uk-icon="icon: chevron-down"></span></a>
                     <div class="uk-border-rounded" uk-dropdown="pos: top-right; mode: click; duration: 100">
-                        <ul id="apps" class="uk-nav uk-dropdown-nav">
-                            <li><a href="#">app1</a></li>
-                            <li><a href="#">app2</a></li>
-                        </ul>
+                        <ul id="apps" class="uk-nav uk-dropdown-nav"></ul>
+                        <div id="all-apps">All apps</div>
                     </div>
                 </li>
                 <li>
