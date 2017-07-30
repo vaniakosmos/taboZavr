@@ -22,20 +22,24 @@
     </script>
 
     <script id="tile-template" type="text/x-handlebars-template">
-        <a class="tab-tile">
+        <a href="{{url}}" class="tab-tile" title="{{title}} : {{url}}">
             <div class="tab-container">
-                <div class="tab-favicon">
-                    <!--<img src="" title="">-->
-                    <span uk-icon="icon: heart"></span>
-                </div>
-                <div class="tab-title">{{text}}</div>
+                <img src="{{favicon}}" class="tab-favicon">
+                <div class="tab-title">{{title}}</div>
             </div>
         </a>
     </script>
 
+    <script id="tab-title-template" type="text/x-handlebars-template">
+        <li {{#if active}}class="uk-active"{{/if}}><a href="#">{{name}}</a></li>
+    </script>
+
     <script id="engine-template" type="text/x-handlebars-template">
         <label>
-            <input type="radio" name="engine" value="{{name}}" data-url="{{url}}" {{#if checked}}checked{{/if}}>
+            <input type="radio" name="engine"
+                   value="{{name}}"
+                   data-url="{{url}}"
+                   {{#if checked}}checked{{/if}}>
             <span class="uk-badge">{{name}}</span>
         </label>
     </script>
@@ -131,51 +135,8 @@
     <!--tabs-->
     <div class="tabs-container uk-card uk-card-body uk-card-default uk-border-rounded">
         <div id="tabs">
-            <ul class="uk-child-width-expand" uk-tab uk-switcher>
-                <li class="uk-active"><a href="#">Fav</a></li>
-                <li><a href="#">Top</a></li>
-                <li><a href="#">Recent</a></li>
-            </ul>
-            <ul class="uk-switcher uk-margin">
-                <li>
-                    <a class="tab-tile">
-                        <div class="tab-container">
-                            <div class="tab-favicon">
-                                <!--<img src="" title="">-->
-                                <span uk-icon="icon: heart"></span>
-                            </div>
-                            <div class="tab-title">placeholder</div>
-                        </div>
-                    </a>
-                    <a class="tab-tile">
-                        <div class="tab-container">
-                            <div class="tab-favicon">
-                                <!--<img src="" title="">-->
-                                <span uk-icon="icon: heart"></span>
-                            </div>
-                            <div class="tab-title">placeholder placeholder</div>
-                        </div>
-                    </a><a class="tab-tile">
-                    <div class="tab-container">
-                        <div class="tab-favicon">
-                            <!--<img src="" title="">-->
-                            <span uk-icon="icon: heart"></span>
-                        </div>
-                        <div class="tab-title">placeholder placeholder</div>
-                    </div>
-                </a><a class="tab-tile">
-                    <div class="tab-container">
-                        <div class="tab-favicon">
-                            <!--<img src="" title="">-->
-                            <span uk-icon="icon: heart"></span>
-                        </div>
-                        <div class="tab-title">placeholder placeholder placeholder</div>
-                    </div>
-                </a>
-                </li>
-                <li>top</li>
-                <li>recent</li>
-            </ul>
+            <ul class="uk-child-width-expand" uk-tab uk-switcher></ul>
+            <ul class="uk-switcher uk-margin"></ul>
         </div>
     </div>
     <!--/tabs-->

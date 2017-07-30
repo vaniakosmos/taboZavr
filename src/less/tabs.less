@@ -11,6 +11,10 @@
     margin: 3rem auto 0 auto;
 }
 
+.bottom-border(@alpha, @size: 3px) {
+    border-bottom: @size solid rgba(255, 255, 255, @alpha);
+}
+
 .uk-tab {
     background: @global-bg;
     border-radius: @global-card-radius;
@@ -25,22 +29,23 @@
 
     > .uk-active > a, .uk-active > a:hover {
         color: @global-color;
-        border-bottom: 2px solid rgba(255, 255, 255, 1);
+        .bottom-border(1);
     }
 
     > * > a {
         color: @global-color;
         text-transform: none;
+        .bottom-border(0.2);
 
         &:hover {
             color: @global-color;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+            .bottom-border(0.7);
         }
     }
 }
 
 .tab-tile {
-    width: 20%;
+    width: calc(~"100%/5 - 21px");
     height: 1rem;
     display: inline-block;
     padding: 10px 5px;
@@ -62,11 +67,19 @@
 }
 
 .tab-container {
-    -webkit-mask-image: linear-gradient(90deg, #000, #000, 80%, transparent, 110%, transparent);
+    -webkit-mask-image: -webkit-gradient(
+            linear, 0% 50%, 100% 50%,
+            color-stop(0.0, black), color-stop(0.8, black),
+            color-stop(0.9, transparent), color-stop(1, transparent));
 }
 
 .tab-favicon {
-
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: -1px;
+    margin: 0 5px;
 }
 
 .tab-title {

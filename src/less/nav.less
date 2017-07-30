@@ -59,16 +59,24 @@
         text-align: center;
         border-radius: @global-card-radius;
         display: inline-block;
+        padding: 5px;
         height: 87px;
         width: 100px;
-        white-space: normal;
+        white-space: nowrap;
         overflow: hidden;
-        padding: 5px;
+
+        > a {
+            -webkit-mask-image: -webkit-gradient(
+                    linear, 0% 50%, 100% 50%,
+                    color-stop(0.0, black), color-stop(0.9, black),
+                    color-stop(0.99, transparent), color-stop(1, transparent));
+        }
 
         > a > span {
             font-size: .8rem;
             display: block;
             color: darken(@global-color, 25%);
+            width: 100px;
         }
 
         &:hover {
