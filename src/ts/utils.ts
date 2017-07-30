@@ -12,6 +12,23 @@ export class Logger {
     }
 }
 
+export function openLinkFunc(url: string) {
+    return function (event) {
+        if (event.ctrlKey ||
+            event.shiftKey ||
+            event.metaKey ||  // cmd
+            (event.button && event.button === 1)
+        ) {
+            chrome.tabs.create({url: url, active: false});
+        }
+        else {
+            chrome.tabs.getCurrent(function (tab) {
+                chrome.tabs.update(tab.id, {url: url});
+            })
+        }
+    }
+}
+
 export class Color {
     r: number;
     g: number;

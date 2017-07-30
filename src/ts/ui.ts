@@ -1,5 +1,5 @@
 import {Theme} from "./types";
-import {Logger} from './utils'
+import {openLinkFunc, Logger} from './utils'
 import Tab = chrome.tabs.Tab;
 import ChromeSetting = chrome.types.ChromeSetting;
 
@@ -33,31 +33,14 @@ export function applyTheme(theme: Theme) {
     $('.accent').css('background', theme.accent);
 }
 
+
 export function setUpNavUrls() {
-    $('#history').click(linker('chrome://history/'));
-    $('#bookmarks').click(linker('chrome://bookmarks/'));
-    $('#extensions').click(linker('chrome://extensions/'));
-    $('#all-apps').click(linker('chrome://apps/'));
+    $('#history').click(openLinkFunc('chrome://history/'));
+    $('#bookmarks').click(openLinkFunc('chrome://bookmarks/'));
+    $('#extensions').click(openLinkFunc('chrome://extensions/'));
+    $('#all-apps').click(openLinkFunc('chrome://apps/'));
     setUpAddons();
 }
-
-function linker(url: string) {
-    return function (event) {
-        if (event.ctrlKey ||
-            event.shiftKey ||
-            event.metaKey ||  // cmd
-            (event.button && event.button === 1)
-        ) {
-            chrome.tabs.create({url: url, active: false});
-        }
-        else {
-            chrome.tabs.getCurrent(function (tab) {
-                chrome.tabs.update(tab.id, {url: url});
-            })
-        }
-    }
-}
-
 
 
 function setUpAddons() {

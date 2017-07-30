@@ -34,6 +34,14 @@ export interface Engine {
 
 export interface Tabs {
     def: string,
-    chosen: [{}],
-    hide: boolean,
+    grid: {
+        cols: number,
+        rows: number,
+    }
+    entities: Tab[],
+}
+
+export interface Tab {
+    name: string,
+    src: string,  // top | recent | bookmark:folder[/folder]*
 }
