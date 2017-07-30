@@ -1,6 +1,6 @@
 export interface Options {
     theme: Theme,
-    // search: Search,
+    search: Search,
     // tabs: any,
 }
 
@@ -21,11 +21,15 @@ export interface Theme {
     // }
 }
 
-
 export interface Search {
     def: string,
-    engines: [{ name: string, url: string, icon?: any }],
-    hide: boolean,
+    engines: Engine[],
+    labelIsUrl: boolean,
+}
+
+export interface Engine {
+    name: string,
+    url: string,
 }
 
 export interface Tabs {

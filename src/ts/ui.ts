@@ -58,43 +58,26 @@ function linker(url: string) {
     }
 }
 
-const source = $("#app-template").html();
-const appTempalte = Handlebars.compile(source);
+
 
 function setUpAddons() {
+    const $source = $("#app-template").html();
+    const appTemplate = Handlebars.compile($source);
+
     chrome.management.getAll(function (addons) {
-        const $app_list = $('#apps');
-
-        function add_addon($target: JQuery,
-                           addon: chrome.management.ExtensionInfo,
-                           callback) {
-            let icon = '';
-            if (addon.icons) {
-                icon = addon.icons[addon.icons.length-1].url;
-            }
-            $target.append(
-                $(appTempalte({
-                    name: addon.name,
-                    icon: icon,
-                })).click(callback)
-            );
-        }
-
-        // todo: show icon instead of addons name
+        const $apps_list = $('#apps');
         for (let addon of addons) {
-            console.log(addon.name);
-            console.log(addon.icons);
             if (addon.type.endsWith('_app')) {
                 let icon = '';
                 if (addon.icons) {
                     icon = addon.icons[addon.icons.length-1].url;
                 }
-                $app_list.append(
-                    $(appTempalte({
-                        name: addon.name,
-                        icon: icon,
-                    })).click(() => chrome.management.launchApp(addon.id))
-                );
+                const appHtml = appTemplate({
+                    name: addon.name,
+                    icon: icon,
+                });
+                const $clickableApp = $(appHtml).click(() => chrome.management.launchApp(addon.id));
+                $apps_list.append($clickableApp);
             }
         }
     });

@@ -16,10 +16,28 @@
         <li>
             <a title="{{name}}" uk-tooltip>
                 <img src="{{icon}}" class="app-icon" alt="all"/>
-                <!--<span class="app-icon" style="background-image: url({{icon}});"></span>-->
                 <span>{{name}}</span>
             </a>
         </li>
+    </script>
+
+    <script id="tile-template" type="text/x-handlebars-template">
+        <a class="tab-tile">
+            <div class="tab-container">
+                <div class="tab-favicon">
+                    <!--<img src="" title="">-->
+                    <span uk-icon="icon: heart"></span>
+                </div>
+                <div class="tab-title">{{text}}</div>
+            </div>
+        </a>
+    </script>
+
+    <script id="engine-template" type="text/x-handlebars-template">
+        <label>
+            <input type="radio" name="engine" value="{{name}}" data-url="{{url}}" {{#if checked}}checked{{/if}}>
+            <span class="uk-badge">{{name}}</span>
+        </label>
     </script>
     <!--/templates-->
 </head>
@@ -38,7 +56,7 @@
                 </li>
                 <li>
                     <a href="#">Apps <span uk-icon="icon: chevron-down"></span></a>
-                    <div class="uk-border-rounded" uk-dropdown="pos: top-right; mode: click; duration: 100">
+                    <div class="uk-border-rounded" uk-dropdown="pos: bottom-right; mode: click; duration: 100">
                         <ul id="apps" class="uk-nav uk-dropdown-nav"></ul>
                         <div id="all-apps">All apps</div>
                     </div>
@@ -90,18 +108,18 @@
     <div class="search-container uk-card uk-card-body uk-card-default uk-border-rounded">
         <div class="uk-margin">
             <form id="engines">
-                <label>
-                    <input type="radio" name="engine" value="google" checked>
-                    <span class="uk-badge">google</span>
-                </label>
-                <label>
-                    <input type="radio" name="engine" value="google">
-                    <span class="uk-badge">trakt</span>
-                </label>
+                <!--<label>-->
+                    <!--<input type="radio" name="engine" value="google" checked>-->
+                    <!--<span class="uk-badge">google</span>-->
+                <!--</label>-->
+                <!--<label>-->
+                    <!--<input type="radio" name="engine" value="google">-->
+                    <!--<span class="uk-badge">trakt</span>-->
+                <!--</label>-->
             </form>
             <form class="uk-inline">
                 <label>
-                    <a class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search"></a>
+                    <a id="search-btn" class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search"></a>
                     <input id="search" class="uk-input uk-form-width-large uk-border-rounded" type="text"
                            placeholder="search...">
                 </label>

@@ -1,5 +1,6 @@
 import themer from './theme'
 import {applyTheme, setUpNavUrls} from './ui'
+import {setUpSearch} from './search'
 import {Logger} from './utils'
 
 
@@ -16,22 +17,21 @@ themer.load()
 
 setUpNavUrls();
 
-function changeBG() {
-    const $body = $('body');
-    console.log($body.css('background'));
-    let cols = $body.css('background').match(/^rgb\((\d+),\s*(\d+),\s*(\d+).*/);
-    let color = {
-        r: parseInt(cols[1]),
-        g: parseInt(cols[2]),
-        b: parseInt(cols[3]),
-    };
-    let isLight = (color.r + color.g + color.b) > (255*3/2);
-    console.log(isLight);
-    if (isLight) {
-        $body.css('color', 'black');
-    }
-    else {
-        $body.css('color', 'white');
-    }
-}
-// changeBG();
+setUpSearch({
+    def: 'google',
+    engines: [
+        {
+            name: 'google',
+            url: 'http://google.com/search?q=',
+        },
+        {
+            name: 'trakt',
+            url: 'http://trakt.tv/search?q=',
+        },
+        {
+            name: 'images',
+            url: 'https://www.google.com/images?q=',
+        },
+    ],
+    labelIsUrl: false,
+});
