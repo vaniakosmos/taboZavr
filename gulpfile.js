@@ -17,7 +17,8 @@ const sourcemaps = require('gulp-sourcemaps');
 const pug = require('gulp-pug');
 
 
-gulp.task('default', ['watch less', 'browserify']);
+gulp.task('default', ['watch less', 'watch views', 'browserify']);
+gulp.task('watch front', ['watch less', 'watch views']);
 
 // scripts
 const browserifyConfig = {

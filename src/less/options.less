@@ -1,3 +1,54 @@
+@import (reference) "variables";
+
 .uk-offcanvas-bar {
-    //width: 400px;
+    background: darken(fadein(@global-bg, 5%), 10%);
 }
+
+.uk-offcanvas-close {
+    top: 10px;
+    right: 10px;
+    //color: black !important;
+}
+
+#options-search {
+    width: 600px;
+}
+
+.uk-accordion-content {
+    > h5 {
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+    > * {
+        margin-left: 30px;
+    }
+}
+
+#opt-background {
+    > label {
+        display: table-row;
+        margin-bottom: 10px;
+        vertical-align: middle;
+
+        > div {
+            display: table-cell;
+            //display: inline-block;
+        }
+
+        > input {
+            //display: table-cell;
+            margin-right: 5px;
+        }
+    }
+}
+
+#opt-visibility {
+    div {
+        margin-bottom: 5px;
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+    }
+}
+

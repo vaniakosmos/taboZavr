@@ -113,6 +113,30 @@ body {
 #options-search {
   width: 600px;
 }
+.uk-accordion-content > h5 {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.uk-accordion-content > * {
+  margin-left: 30px;
+}
+#opt-background > label {
+  display: table-row;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+#opt-background > label > div {
+  display: table-cell;
+}
+#opt-background > label > input {
+  margin-right: 5px;
+}
+#opt-visibility div {
+  margin-bottom: 5px;
+}
+#opt-visibility div input[type="checkbox"] {
+  margin-right: 5px;
+}
 .title-container {
   display: none;
   margin-top: 3rem;

@@ -1,12 +1,37 @@
 div#offcanvas-flip(uk-offcanvas="flip: true; overlay: false; mode: push")
     div.uk-offcanvas-bar
         button.uk-offcanvas-close(type="button" uk-close)
-        h2 Settings
-        ul(uk-accordion="multiple: true")
+        h1 Settings
+        ul(uk-accordion="multiple: false")
             li.uk-open
-                h3.uk-accordion-title Appearance
+                h2.uk-accordion-title Appearance
                 div.uk-accordion-content
-                    | appearance
+                    h5 Background
+                    form#opt-background
+                        label
+                            input.uk-radio(type="radio" name="background" value='background' checked)
+                            div
+                                span Plain color
+                                br/
+                                input(type="color" value="#ececec")
+                        label
+                            input.uk-radio(type="radio" name="background" value='own image')
+                            div
+                                span Image
+                                br/
+                                input(type="file" name="image-file" accept=".jpg, .jpeg, .png")
+                        // image from src
+                    // h5 Theme
+                    h5 Visibility
+                    div#opt-visibility
+                        div
+                            span Opacity: 100%
+                            br/
+                            input.uk-range(type="range" min="0" max="100" value="100" step="1")
+                        div
+                            label
+                                input.uk-checkbox(type="checkbox" name="reveal-on-hover")
+                                span Reveal on hover
             li
                 h3.uk-accordion-title Search
                 div.uk-accordion-content
