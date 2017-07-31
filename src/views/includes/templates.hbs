@@ -1,0 +1,31 @@
+<script id="app-template" type="text/x-handlebars-template">
+    <li>
+        <a title="{{name}}" uk-tooltip>
+            <img src="{{icon}}" class="app-icon" alt="all"/>
+            <span>{{name}}</span>
+        </a>
+    </li>
+</script>
+
+<script id="tile-template" type="text/x-handlebars-template">
+    <a href="{{url}}" class="tab-tile" title="{{title}} : {{url}}">
+        <div class="tab-container">
+            <img src="{{favicon}}" class="tab-favicon">
+            <div class="tab-title">{{title}}</div>
+        </div>
+    </a>
+</script>
+
+<script id="tab-title-template" type="text/x-handlebars-template">
+    <li {{#if active}}class="uk-active"{{/if}}><a href="#">{{name}}</a></li>
+</script>
+
+<script id="engine-template" type="text/x-handlebars-template">
+    <label>
+        <input type="radio" name="engine"
+               value="{{name}}"
+               data-url="{{url}}"
+               {{#if checked}}checked{{/if}}>
+        <span class="uk-badge">{{name}}</span>
+    </label>
+</script>

@@ -22,6 +22,8 @@
     "gulp-concat": "^2.6.1",
     "gulp-less": "^3.3.2",
     "gulp-minify-css": "^1.2.4",
+    "gulp-pug": "^3.3.0",
+    "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "less": "^2.7.2",

@@ -1,0 +1,17 @@
+div#offcanvas-flip(uk-offcanvas="flip: true; overlay: false; mode: push")
+    div.uk-offcanvas-bar
+        button.uk-offcanvas-close(type="button" uk-close)
+        h2 Settings
+        ul(uk-accordion="multiple: true")
+            li.uk-open
+                h3.uk-accordion-title Appearance
+                div.uk-accordion-content
+                    | appearance
+            li
+                h3.uk-accordion-title Search
+                div.uk-accordion-content
+                    | search
+            li
+                h3.uk-accordion-title Tabs
+                div.uk-accordion-content
+                    | tabs

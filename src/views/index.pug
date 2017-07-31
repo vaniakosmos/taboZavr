@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+    head
+        title New Tab
+        meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+
+        link(rel="stylesheet" href="css/vendors/uikit.min.css")
+        link(rel="stylesheet" href="css/app.css")
+
+        script(src="js/vendors/jquery.js")
+        script(src="js/vendors/uikit.min.js")
+        script(src="js/vendors/uikit-icons.min.js")
+        script(src="js/vendors/handlebars.min.js")
+
+        include includes/templates.hbs
+
+    body
+        div.uk-offcanvas-content
+            include includes/navbar
+            include includes/options
+
+        div.content
+            include includes/header
+            include includes/search
+            include includes/tabs
+
+        script(src="js/app.js")
