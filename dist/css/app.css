@@ -1,7 +1,9 @@
 html,
 body {
   height: 100%;
-  background: #a8a8a8;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 body {
   margin: 0;
@@ -193,14 +195,17 @@ body {
 }
 #engines input[type="radio"]:checked + span {
   background: rgba(0, 0, 0, 0.6);
+  border: 1px solid white;
 }
 #engines span:hover {
   cursor: pointer;
   background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #c7c7c7;
 }
 #engines .uk-badge {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+  border: 1px dotted transparent;
 }
 .tabs-container {
   background: none;
@@ -234,7 +239,7 @@ body {
   border-bottom: 3px solid rgba(255, 255, 255, 0.7);
 }
 .tab-tile {
-  width: calc(100%/5 - 21px);
+  width: calc(100%/5 - 23px);
   height: 1rem;
   display: inline-block;
   padding: 10px 5px;
@@ -244,10 +249,12 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-align: left;
+  border: 1px solid transparent;
 }
 .tab-tile:hover {
   text-decoration: none;
   background: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
 }
 .tab-tile > * > div {
   display: inline-block;
