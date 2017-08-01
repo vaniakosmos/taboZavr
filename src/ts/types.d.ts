@@ -1,24 +1,22 @@
 export interface Options {
     theme: Theme,
     search: Search,
-    // tabs: any,
+    tabs: Tabs,
 }
 
 export interface Theme {
-    isImage: boolean,
     title: string,
-    header: {
-        value: string,
-        size: number,
-        hide: boolean,
+    header: string,
+    background: {
+        color: string,
+        image: string,
     },
-    accent: string,
-    background: string,
-    // image: {
-    //     url: string,
-    //     vendors: {}
-    //     period: number,
-    // }
+    visibility: Visibility
+}
+
+export interface Visibility {
+    opacity: number,
+    revealOnHover: boolean,
 }
 
 export interface Search {

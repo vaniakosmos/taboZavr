@@ -6,6 +6,13 @@ body {
 body {
   margin: 0;
 }
+.hidable {
+  opacity: 0;
+}
+.visible {
+  opacity: 1 !important;
+  transition: opacity .2s;
+}
 ::-webkit-scrollbar {
   display: none;
 }
@@ -137,6 +144,9 @@ body {
 #opt-visibility div input[type="checkbox"] {
   margin-right: 5px;
 }
+.actions > button:not(:last-child) {
+  margin-right: 10px;
+}
 .title-container {
   display: none;
   margin-top: 3rem;
@@ -150,14 +160,9 @@ body {
   font-size: 5em;
 }
 .search-container {
-  transition: opacity 0.3s ease-in-out;
-  opacity: 1;
   width: 60%;
   margin: 60px auto 0 auto;
   background: none;
-}
-.search-container:hover {
-  opacity: 1;
 }
 .search-container form {
   text-align: left;
@@ -192,14 +197,9 @@ body {
   border-radius: 3px;
 }
 .tabs-container {
-  transition: opacity 0.3s ease-in-out;
-  opacity: 1;
   background: none;
   width: 60%;
   margin: 3rem auto 0 auto;
-}
-.tabs-container:hover {
-  opacity: 1;
 }
 .uk-tab {
   background: rgba(58, 58, 58, 0.91);

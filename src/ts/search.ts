@@ -1,24 +1,11 @@
 import {Engine, Search} from "./types";
+import {Logger} from "./utils";
 
 
-function setUpEngines(engines: Array<Engine>, def: string): JQuery[] {
-    const $enginesForm = $('#engines');
-    const $source = $("#engine-template").html();
-    const engineTemplate = Handlebars.compile($source);
-    const $engines = [];
-    engines.forEach(function (engine) {
-        const $engine = $(engineTemplate({
-            name: engine.name,
-            url: engine.url,
-            checked: engine.name === def,
-        }));
-        $engines.push($engine.find('input'));
-        $enginesForm.append($engine)
-    });
-    return $engines;
-}
+const logger = new Logger('search');
 
 export function setUpSearch(searchOptions: Search) {
+    logger.log('setting search and search engines...');
     const $searchInput = $('#search');
     const $searchButton = $('#search-btn');
     const engines = searchOptions.engines;
@@ -59,4 +46,21 @@ export function setUpSearch(searchOptions: Search) {
     $searchButton.click(() => {
         doSearch();
     });
+}
+
+function setUpEngines(engines: Array<Engine>, def: string): JQuery[] {
+    const $enginesForm = $('#engines');
+    const $source = $("#engine-template").html();
+    const engineTemplate = Handlebars.compile($source);
+    const $engines = [];
+    engines.forEach(function (engine) {
+        const $engine = $(engineTemplate({
+            name: engine.name,
+            url: engine.url,
+            checked: engine.name === def,
+        }));
+        $engines.push($engine.find('input'));
+        $enginesForm.append($engine)
+    });
+    return $engines;
 }

@@ -1,6 +1,9 @@
 import {Tab, Tabs} from "./types";
-import {openLinkFunc} from "./utils";
+import {openLinkFunc, Logger} from "./utils";
 import BookmarkTreeNode = chrome.bookmarks.BookmarkTreeNode;
+
+
+const logger = new Logger('tabs');
 
 interface TitleUrl {
     title: string,
@@ -12,6 +15,7 @@ const headerTemplate = Handlebars.compile($("#tab-title-template").html());
 
 
 export function setUpTabs(tabs: Tabs) {
+    logger.log('setting tabs...');
     const $tabs = $('#tabs');
     const $headers = $tabs.find('ul').eq(0);
     const $contents = $tabs.find('ul').eq(1);
@@ -84,10 +88,11 @@ function setUpRecent($content: JQuery, {rows, cols}) {
 function setUpBookmarks(tab: Tab, $content: JQuery, {rows, cols}) {
     if (!tab.src.startsWith('bookmark:')) return;
     const path = tab.src.replace(/^bookmark:/, '').split('/');
-    console.log('path', path);
     chrome.bookmarks.getTree(function (tree) {
         const bookmarkTree = tree[0];
         const folder = traverse(bookmarkTree, path);
+        // console.log('path', path);
+        // console.log('folder', folder);
         if (folder) {
             for (let i = 0; i < folder.children.length && i < rows * cols; i++) {
                 const bookmark = folder.children[i];
@@ -96,6 +101,8 @@ function setUpBookmarks(tab: Tab, $content: JQuery, {rows, cols}) {
                 }
             }
         }
-        console.log('folder', folder);
+        else {
+            // todo: remove from header
+        }
     })
 }

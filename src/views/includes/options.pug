@@ -30,7 +30,7 @@ div#offcanvas-flip(uk-offcanvas="flip: true; overlay: false; mode: push")
                             input.uk-range(type="range" min="0" max="100" value="100" step="1")
                         div
                             label
-                                input.uk-checkbox(type="checkbox" name="reveal-on-hover")
+                                input.uk-checkbox(type="checkbox" name="reveal-on-hover" checked="checked")
                                 span Reveal on hover
             li
                 h3.uk-accordion-title Search
@@ -40,3 +40,6 @@ div#offcanvas-flip(uk-offcanvas="flip: true; overlay: false; mode: push")
                 h3.uk-accordion-title Tabs
                 div.uk-accordion-content
                     | tabs
+            div.actions
+                button#save-settings.uk-button.uk-button-primary.uk-button-small(type='button') save
+                button#set-default.uk-button.uk-button-danger.uk-button-small(type='button') set default

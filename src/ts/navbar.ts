@@ -1,49 +1,24 @@
-import {Theme} from "./types";
-import {openLinkFunc, Logger} from './utils'
-import Tab = chrome.tabs.Tab;
-import ChromeSetting = chrome.types.ChromeSetting;
+import {openLinkFunc, Logger} from "./utils";
 
-const logger = new Logger('ui');
 
-export function applyTheme(theme: Theme) {
-    // title
-    document.title = theme.title;
+const logger = new Logger('navbar');
 
-    // header
-    const $title = $("#title");
-    const header = theme.header;
-    if (header.hide) {
-        $title.hide();
-    }
-    else {
-        $title
-            .html(header.value)
-            .css('font-size', header.size);
-    }
-
-    if (theme.isImage) {
-        // image
-    }
-    else {
-        // background
-        $('body').css('background', theme.background);
-    }
-
-    // accent
-    $('.accent').css('background', theme.accent);
+export function setUpNavbar() {
+    setTimeout(setUpNavUrls, 0);
+    setTimeout(setUpAddons, 0);
 }
 
-
-export function setUpNavUrls() {
+function setUpNavUrls() {
+    logger.log('setting urls...');
     $('#history').click(openLinkFunc('chrome://history/'));
     $('#bookmarks').click(openLinkFunc('chrome://bookmarks/'));
     $('#extensions').click(openLinkFunc('chrome://extensions/'));
     $('#all-apps').click(openLinkFunc('chrome://apps/'));
-    setUpAddons();
 }
 
 
 function setUpAddons() {
+    logger.log('setting add-ons...');
     const $source = $("#app-template").html();
     const appTemplate = Handlebars.compile($source);
 
