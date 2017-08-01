@@ -9,18 +9,37 @@ export function setUpOptions(options: Options) {
     setUpTheme(options.theme)
 }
 
+function fadeInOut($target: JQuery, html, duration = 1000) {
+    $target
+        .html(html)
+        .addClass('uk-animation-slide-top-small')
+        .removeClass('uk-animation-slide-bottom-small uk-animation-reverse');
+    setTimeout(function () {
+        $target
+            .remove('uk-animation-slide-top-small')
+            .addClass('uk-animation-slide-bottom-small uk-animation-reverse');
+
+    }, duration)
+}
+
 function setActions(options) {
     logger.log('setting save and set default buttons...');
+    const $actionsInfo = $('#actions-info');
+
     $('#save-settings').click(function () {
         chrome.storage.sync.set({'options': options}, function () {
             logger.log('saved');
+            fadeInOut($actionsInfo, 'saved', 1500)
         })
     });
 
-    $('#set-default').click(function () {
+    $('#set-default-modal').find('button[name="ok"]').click(function () {
         chrome.storage.sync.remove('options', function () {
             logger.log('removed options');
-            // todo: apply default options
+            // todo: apply default options w/o reloading (but need to exclude from reloading event listeners appliers)
+            chrome.tabs.getCurrent(function(tab) {
+                chrome.tabs.reload(tab.id);
+            });
         });
     });
 }

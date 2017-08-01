@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>New Tab</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/vendors/uikit.min.css">
+    <script src="js/vendors/jquery.js"></script>
+    <script src="js/vendors/uikit.min.js"></script>
+    <script src="js/vendors/uikit-icons.min.js"></script>
+</head>
+<body>
+
+
+<div class="uk-offcanvas-content">
+    <div class="uk-container">
+
+        <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li><a class="uk-navbar-toggle" uk-toggle="target: #sidebar">
+                        open sidebar
+                    </a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div>
+            <ul>
+                <li>Open sidebar</li>
+                <li>Open modal from sidebar</li>
+                <li>Close modal</li>
+                <li>Try to open sidebar again</li>
+                <li style="color: red;">boom</li>
+            </ul>
+        </div>
+
+        <div id="modal" uk-modal="stack: true">
+            <div class="uk-modal-dialog uk-modal-body">
+                <p>close this</p>
+                <p class="uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">
+                        close
+                    </button>
+                </p>
+            </div>
+        </div>
+
+        <div id="sidebar" class="uk-offcanvas" uk-offcanvas="flip: true; overlay: false">
+            <div class="uk-offcanvas-bar">
+                <button class="uk-button uk-button-danger uk-button-small" type="button"
+                        uk-toggle="target: #modal">
+                    open modal
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!---->
+
+<div class="uk-offcanvas-content">
+    <div class="uk-container">
+
+        <h2>Scrollable content</h2>
+        <ul>
+            <li>Scroll to test it works</li>
+            <li>Open sidebar</li>
+            <li>Open stackable modal (from offcanvas)</li>
+            <li>Close modal & offcanvas</li>
+            <li class="uk-text-danger">Page not scrollable anymore</li>
+        </ul>
+
+        <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #sidebar3">
+            Open sidebar
+        </button>
+
+        <div id="modal-example" uk-modal="stack: true">
+            <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title">Headline</h2>
+                <p class="uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                    <button class="uk-button uk-button-primary" type="button">Save</button>
+                </p>
+            </div>
+        </div>
+
+        <div id="sidebar3" class="uk-offcanvas" uk-offcanvas="overlay: false">
+            <div class="uk-offcanvas-bar">
+                <button class="uk-offcanvas-close" type="button" uk-close></button>
+                <button class="uk-button uk-button-default uk-margin-small-right" type="button"
+                        uk-toggle="target: #modal-example">
+                    Open stacked modal
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

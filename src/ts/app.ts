@@ -11,7 +11,7 @@ const logger = new Logger('app');
 logger.log('inside');
 
 // default theme
-let options: Options = {
+let defaultOptions: Options = {
     theme: {
         title: 'New tab',
         header: 'hello ma dude',
@@ -39,6 +39,10 @@ let options: Options = {
                 name: 'trakt',
                 url: 'http://trakt.tv/search?q=',
             },
+            {
+                name: 'wiki',
+                url: 'https://en.wikipedia.org/w/index.php?search=',
+            },
         ],
         labelIsUrl: false,
     },
@@ -62,10 +66,6 @@ let options: Options = {
                 name: 'Recent',
                 src: 'recent',
             },
-            // {
-            //     name: 'ner',
-            //     src: 'bookmark:Other Bookmarks/ner',
-            // },
         ],
     }
 };
@@ -73,13 +73,15 @@ let options: Options = {
 function promiseOptions(): Promise<Options> {
     return new Promise(function (resolve) {
         chrome.storage.sync.get('options', function (result) {
+            let options: Options;
             if (result['options']) {
+                options = result['options'] as Options;
                 logger.log('using options loaded from storage');
                 logger.log('options:', options);
-                options = result['options'] as Options;
                 resolve(options)
             }
             else {
+                options = JSON.parse(JSON.stringify(defaultOptions));  // deep copy
                 logger.log('using default options and save them into storage');
                 logger.log('options:', options);
                 chrome.storage.sync.set({'options': options}, function () {

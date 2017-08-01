@@ -1,4 +1,4 @@
-div#offcanvas-flip(uk-offcanvas="flip: true; overlay: false; mode: push")
+div#sidebar(uk-offcanvas="flip: true; overlay: false; mode: push")
     div.uk-offcanvas-bar
         button.uk-offcanvas-close(type="button" uk-close)
         h1 Settings
@@ -30,7 +30,7 @@ div#offcanvas-flip(uk-offcanvas="flip: true; overlay: false; mode: push")
                             input.uk-range(type="range" min="0" max="100" value="100" step="1")
                         div
                             label
-                                input.uk-checkbox(type="checkbox" name="reveal-on-hover" checked="checked")
+                                input.uk-checkbox(type="checkbox" name="reveal-on-hover" checked)
                                 span Reveal on hover
             li
                 h3.uk-accordion-title Search
@@ -40,6 +40,15 @@ div#offcanvas-flip(uk-offcanvas="flip: true; overlay: false; mode: push")
                 h3.uk-accordion-title Tabs
                 div.uk-accordion-content
                     | tabs
-            div.actions
-                button#save-settings.uk-button.uk-button-primary.uk-button-small(type='button') save
-                button#set-default.uk-button.uk-button-danger.uk-button-small(type='button') set default
+        div#actions.gaped
+            button#save-settings.uk-button.uk-button-primary.uk-button-small(type='button') save
+            button#set-default.uk-button.uk-button-danger.uk-button-small(type='button' uk-toggle="target: #set-default-modal")
+                | set default
+        div#actions-info
+        div#set-default-modal(uk-modal="stack: true")
+            div.uk-modal-dialog.uk-modal-body
+                h2.uk-modal-title Set default options?
+                p This action will set up default options and reload the tab.
+                p.uk-text-right.gaped
+                    button.uk-button.uk-button-default.uk-button-small.uk-modal-close(type="button" name="cancel") Nevermind
+                    button.uk-button.uk-button-danger.uk-button-small(type="button" name="ok") Proceed

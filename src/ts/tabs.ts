@@ -101,8 +101,5 @@ function setUpBookmarks(tab: Tab, $content: JQuery, {rows, cols}) {
                 }
             }
         }
-        else {
-            // todo: remove from header
-        }
     })
 }
