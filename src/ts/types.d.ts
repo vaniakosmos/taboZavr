@@ -7,16 +7,19 @@ export interface Options {
 export interface Theme {
     title: string,
     header: string,
-    background: {
-        color: string,
-        image: string,
-    },
+    background: Background,
     visibility: Visibility
 }
 
 export interface Visibility {
     opacity: number,
     revealOnHover: boolean,
+}
+
+export interface Background {
+    def: string,
+    color: string,
+    image: string,
 }
 
 export interface Search {

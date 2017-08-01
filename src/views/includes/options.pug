@@ -9,17 +9,17 @@ div#sidebar(uk-offcanvas="flip: true; overlay: false; mode: push")
                     h5 Background
                     form#opt-background
                         label
-                            input.uk-radio(type="radio" name="background" value='background' checked)
+                            input.uk-radio(type="radio" name="background" value='color')
                             div
                                 span Plain color
                                 br/
-                                input(type="color" value="#ececec")
+                                input#bg-color-input(type="color" value="#ececec")
                         label
-                            input.uk-radio(type="radio" name="background" value='own image')
+                            input.uk-radio(type="radio" name="background" value='image')
                             div
                                 span Image
                                 br/
-                                input(type="file" name="image-file" accept=".jpg, .jpeg, .png")
+                                input#bg-image-input(type="file" name="image-file" accept=".jpg, .jpeg, .png")
                         // image from src
                     // h5 Theme
                     h5 Visibility
