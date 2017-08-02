@@ -59,7 +59,7 @@ gulp.task('less', function () {
         .pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task('watch less', function () {
+gulp.task('watch less', ['less'], function () {
     gulp.watch('./src/less/*.less', ['less']);
 });
 
@@ -70,6 +70,6 @@ gulp.task('views', function buildHTML() {
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('watch views', function () {
-    gulp.watch('./src/views/**/*.pug', ['views']);
+gulp.task('watch views', ['views'], function () {
+    gulp.watch(['./src/views/**/*.pug', './src/views/**/*.hbs'], ['views']);
 });
