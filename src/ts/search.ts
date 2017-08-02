@@ -8,34 +8,7 @@ export function setUpSearch(searchOptions: Search) {
     logger.log('setting search and search engines...');
     const $searchInput = $('#search');
     const $searchButton = $('#search-btn');
-    const engines = searchOptions.engines;
-    const $engineInputs = setUpEngines(engines, searchOptions.def);
-
-    function doSearch(url = 'http://google.com/search?q=') {
-        let query = $searchInput.val();
-        for (let $engineInput of $engineInputs) {
-            if ($engineInput.prop('checked')) {
-                url = $engineInput.attr('data-url');
-                break;
-            }
-        }
-        if (query) {
-            const destUrl = url + encodeURIComponent(query as string);
-            chrome.tabs.getCurrent(function (tab) {
-                chrome.tabs.update(tab.id, {
-                    url: destUrl,
-                });
-            });
-        }
-    }
-
-    $engineInputs.forEach(function ($engineInput) {
-        $engineInput.click(function () {
-            $searchInput.focus();
-            if (searchOptions.labelIsUrl)
-                doSearch($engineInput.attr('data-url'));
-        })
-    });
+    setUpEngines(searchOptions);
 
     $searchInput.on('keypress', e => {
         if (e.keyCode === 13) {
@@ -48,19 +21,37 @@ export function setUpSearch(searchOptions: Search) {
     });
 }
 
-function setUpEngines(engines: Array<Engine>, def: string): JQuery[] {
+export function setUpEngines(options: Search): void {
     const $enginesForm = $('#engines');
     const $source = $("#engine-template").html();
     const engineTemplate = Handlebars.compile($source);
-    const $engines = [];
-    engines.forEach(function (engine) {
+
+    $enginesForm.html('');  // clear
+
+    options.engines.forEach(function (engine) {
         const $engine = $(engineTemplate({
             name: engine.name,
             url: engine.url,
-            checked: engine.name === def,
+            checked: engine.name === options.def,
         }));
-        $engines.push($engine.find('input'));
+        $engine.find('input').click(function () {
+            $('#search').focus();
+            if (options.labelIsUrl)
+                doSearch($(this).attr('data-url'));
+        });
         $enginesForm.append($engine)
     });
-    return $engines;
+}
+
+function doSearch(url = 'http://google.com/search?q=') {
+    let query = $('#search').val();
+    url = $('#engines').find('input[name=engine]:checked').attr('data-url') || url;
+    if (query) {
+        const destUrl = url + encodeURIComponent(query as string);
+        chrome.tabs.getCurrent(function (tab) {
+            chrome.tabs.update(tab.id, {
+                url: destUrl,
+            });
+        });
+    }
 }

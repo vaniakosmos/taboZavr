@@ -23,6 +23,9 @@ Use `dist/` folder as extension root.
         - option to reveal panels on hover
 - search
     - default search engines: google, google-images, trakt, wiki
+    - set default search engine
+    - change list of search engines (add/remove/rearrange)
+    - search on engine label click
 - tabs
     - default tabs: favorites, top sites, recently closed tabs
 
@@ -34,8 +37,6 @@ Use `dist/` folder as extension root.
         - option for automatic matching color with chrome theme
         - random image from specified source (flickr?) changed with some period
 - search
-    - set default search engine
-    - change list of search engines (add/remove/rearrange)
     - google search suggestions
 - tabs
     - set default tab

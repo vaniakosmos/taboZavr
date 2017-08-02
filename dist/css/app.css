@@ -115,6 +115,15 @@ body {
 .uk-offcanvas-bar {
   background: rgba(33, 33, 33, 0.96);
 }
+.uk-offcanvas-bar::-webkit-scrollbar {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(33, 33, 33, 0.96);
+}
+.uk-offcanvas-bar::-webkit-scrollbar-thumb {
+  background: #eee;
+}
 .uk-offcanvas-close {
   top: 10px;
   right: 10px;
@@ -142,11 +151,26 @@ body {
   margin-right: 10px;
 }
 #actions-info {
-  margin-bottom: 10px;
+  margin-top: 15px;
   text-align: center;
   color: white;
   font-size: 1.2rem;
   height: 50px;
+}
+.modal-desc {
+  margin-bottom: 10px;
+}
+.modal-items > div {
+  margin-bottom: 10px;
+}
+.modal-items > div input[type=radio] {
+  margin-right: 10px;
+}
+.modal-items > div button[uk-close] {
+  margin-left: 10px;
+}
+.modal-footer {
+  margin-top: 30px;
 }
 .title-container {
   display: none;

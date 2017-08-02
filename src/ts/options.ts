@@ -1,12 +1,16 @@
-import {Background, Options, Theme, Visibility} from "./types";
+import {Background, Engine, Options, Search, Theme, Visibility} from "./types";
 import {Logger} from "./utils";
+import {setUpEngines} from "./search";
 
 
 const logger = new Logger('options');
 
+const fieldTemplate = Handlebars.compile($("#field-template").html());
+
 export function setUpOptions(options: Options) {
     setActions(options);
-    setUpTheme(options.theme)
+    setUpTheme(options.theme);
+    setUpSearch(options.search);
 }
 
 function fadeInOut($target: JQuery, html, duration = 1000) {
@@ -43,6 +47,85 @@ function setActions(options) {
                 chrome.tabs.reload(tab.id);
             });
         });
+    });
+}
+
+function setUpSearch(options: Search) {
+    const $fieldsContainer = $('#opt-search-fields');
+    const $searchOnLabel = $('#opt-search-labelclick');
+
+    $searchOnLabel.prop('checked', options.labelIsUrl);
+
+    $searchOnLabel.change(function () {
+        console.log('click');
+        options.labelIsUrl = $(this).prop('checked');
+    });
+
+    function addField({name, url}) {
+        let $html = $(fieldTemplate({name: name, second: url, placeholder: 'url...'}));
+        $html.find('button[uk-close]').click(function () {
+            $(this).parent().remove();
+        });
+        $html.find('input').on('input', function () {
+             $(this).removeClass('uk-form-danger')
+        });
+        $fieldsContainer.append($html);
+    }
+
+    options.engines.forEach(function (engine) {
+        addField(engine)
+    });
+
+    $('#opt-search-add').click(function () {
+        addField({name: '', url: ''})
+    });
+
+    $fieldsContainer
+        .find(`input[name="engines"][value="${options.def}"]`)
+        .prop('checked', true);
+
+    $('#opt-search-ok').click(function () {
+        const names = new Set();
+        const engines: Engine[] = [];
+        let ok = true;
+        let newDefault = '';
+
+        $fieldsContainer.find('div').each(function () {
+            const $nameInput = $(this).find('input[name=first]');
+            const $urlInput = $(this).find('input[name=second]');
+            const $radio = $(this).find('input[type=radio]');
+
+            const name = $nameInput.val() as string;
+            const url = $urlInput.val() as string;
+
+            if (name == '' || names.has(name)) {
+                $nameInput.addClass('uk-form-danger');
+                ok = false;
+            }
+            else if (!url.match(/^https?:\/\/.+\..+\?.+=$/i)) {
+                $urlInput.addClass('uk-form-danger');
+                ok = false;
+            }
+            else {
+                names.add(name);
+                engines.push({name: name, url: url});
+                if ($radio.prop('checked'))
+                    newDefault = name;
+            }
+        });
+
+        if (ok) {
+            console.log('save');
+            options.def = newDefault;
+            options.engines = engines;
+            setUpEngines(options);
+            UIkit.modal($('#opt-search-modal')).hide();
+        }
+        else {
+            console.log('reject');
+        }
+
+        console.log(options);
     });
 }
 
@@ -166,9 +249,6 @@ function visibility(options: Visibility) {
     $('.hidable').hover(function () {
         if ($hoverInput.is(':checked')) {
             $(this).addClass('visible');
-        }
-        else {
-            $(this).removeClass('visible');
         }
     }, function () {
         $(this).removeClass('visible');

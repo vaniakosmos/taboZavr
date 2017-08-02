@@ -2,8 +2,15 @@ div#sidebar(uk-offcanvas="flip: true; overlay: false; mode: push")
     div.uk-offcanvas-bar
         button.uk-offcanvas-close(type="button" uk-close)
         h1 Settings
-        ul(uk-accordion="multiple: false")
-            li.uk-open
+
+        div#actions.gaped
+            button#save-settings.uk-button.uk-button-primary.uk-button-small(type='button') save
+            button#set-default.uk-button.uk-button-danger.uk-button-small(type='button' uk-toggle="target: #set-default-modal")
+                | set default
+        div#actions-info
+
+        ul(uk-accordion="multiple: true")
+            li
                 h2.uk-accordion-title Appearance
                 div.uk-accordion-content
                     h5 Title
@@ -42,20 +49,46 @@ div#sidebar(uk-offcanvas="flip: true; overlay: false; mode: push")
                             label
                                 input.uk-checkbox(type="checkbox" name="reveal-on-hover" checked)
                                 span Reveal on hover
-            li
+            li.uk-open
                 h3.uk-accordion-title Search
                 div.uk-accordion-content
-                    | search
-            li
+                    div.uk-margin-bottom
+                        label
+                            input#opt-search-labelclick.uk-checkbox.uk-margin-small-right(type='checkbox')
+                            span search on engine label click
+                    button.uk-button.uk-button-default.uk-button-small(type="button" uk-toggle="target: #opt-search-modal")
+                        | set up engines
+            li.uk-open
                 h3.uk-accordion-title Tabs
                 div.uk-accordion-content
-                    | tabs
+                    button.uk-button.uk-button-default.uk-button-small(type="button" uk-toggle="target: #opt-tabs-modal") set up
 
-        div#actions-info
-        div#actions.gaped
-            button#save-settings.uk-button.uk-button-primary.uk-button-small(type='button') save
-            button#set-default.uk-button.uk-button-danger.uk-button-small(type='button' uk-toggle="target: #set-default-modal")
-                | set default
+
+        div#opt-search-modal(uk-modal="stack: true; bg-close: false")
+            div.uk-modal-dialog.uk-modal-body(uk-overflow-auto)
+                h2.uk-modal-title Set up search engines
+                div.modal-desc
+                    | You can add, remove and rearrange search engines. Don't forget to save.
+                    br/
+                    | Names must be unique.
+                    br/
+                    | Url must match pattern (#[code s] is optional, #[code *] is wildcard):  #[code http(s)://*?*=]
+
+                div.uk-text-right.uk-margin-bottom
+                    button#opt-search-add.uk-button.uk-button-primary.uk-button-small(type="button" name="cancel") add field
+                div#opt-search-fields.modal-items(uk-sortable="handle: .uk-sortable-handle")
+                    //- fields here
+                div.uk-text-right.gaped.modal-footer
+                    button.uk-button.uk-button-default.uk-button-small.uk-modal-close(type="button" name="cancel") cancel
+                    button#opt-search-ok.uk-button.uk-button-danger.uk-button-small(type="button" name="ok") ok
+
+        div#opt-tabs-modal(uk-modal="stack: true")
+            div.uk-modal-dialog.uk-modal-body(uk-overflow-auto)
+                h2.uk-modal-title Set up tabs
+                p bla bla tabs
+                p.uk-text-right.gaped
+                    button.uk-button.uk-button-default.uk-button-small.uk-modal-close(type="button" name="cancel") cancel
+                    button.uk-button.uk-button-danger.uk-button-small(type="button" name="ok") ok
 
         div#set-default-modal(uk-modal="stack: true")
             div.uk-modal-dialog.uk-modal-body
