@@ -39,7 +39,7 @@ function setActions(options) {
         chrome.storage.local.clear(function () {
             logger.log('cleared storage');
             // todo: apply default options w/o reloading (but need to exclude from reloading event listeners appliers)
-            chrome.tabs.getCurrent(function(tab) {
+            chrome.tabs.getCurrent(function (tab) {
                 chrome.tabs.reload(tab.id);
             });
         });
@@ -54,22 +54,11 @@ function setUpTheme(theme: Theme) {
 
 function background(options: Background) {
     const $body = $('body');
-    const $inputs = $('input[name=background]');
+    const $inputs = $('select[name=background]');
 
     const $colorInput = $('#bg-color-input');
     const $imageInput = $('#bg-image-input');
-
-
-    $inputs.each(function () {
-        const self = $(this);
-        console.log(self.val());
-        if (self.val() == options.def) {
-            self.prop('checked', true);
-        }
-        if (self.val() == 'color') {
-            $('#bg-color-input').val(options.color)
-        }
-    });
+    const $urlInput = $('#bg-url-input');
 
     function setColor(color) {
         $body
@@ -83,36 +72,40 @@ function background(options: Background) {
             .css('background-image', `url("${image}")`);
     }
 
-    if (options.def == 'image' && options.image != '') {
-        setImage(options.image)
-    }
-    else {
-        setColor(options.color)
-    }
-
-    $inputs.change(function () {
-        const self = $(this);
-        if (self.prop('checked')) {
-            console.log('changed default:', self.val());
-            options.def = self.val() as string;
-
-            if (self.val() == 'image' && options.image != '') {
-                setImage($imageInput.val())
-            }
-            else {
-                setColor($colorInput.val())
-            }
+    function setBG() {
+        if (options.def == 'image' && options.image != '') {
+            setImage(options.image)
         }
-    });
+        else if (options.def == 'url' && options.url != '') {
+            setImage(options.url)
+        }
+        else {
+            setColor(options.color)
+        }
+    }
 
+    // set up options current values
+    $inputs.val(options.def).change();
+    $colorInput.val(options.color);
+    $urlInput.val(options.url);
+
+    // set up bg
+    setBG();
+
+    // set up listeners
+    $inputs.change(function () {
+        options.def = $(this).val() as string;
+        setBG();
+    });
 
     $colorInput.change(function () {
         let color = $(this).val() as string;
-        $body
-            .css('background-color', color)
-            .css('background-image', 'none');
+        setColor(color);
         options.color = color;
-        options.def = 'color';
+    });
+
+    $colorInput.click(function () {
+        $inputs.val('color').change();
     });
 
     $imageInput.change(function () {
@@ -120,16 +113,22 @@ function background(options: Background) {
         const reader = new FileReader();
         reader.onloadend = function () {
             let imageUrl = reader.result;
-            // console.log(imageUrl);
-            $body
-                .css('background-color', '')
-                .css('background-image', `url("${imageUrl}")`);
+            setImage(imageUrl);
             options.image = imageUrl;
-            options.def = 'image';
+            $inputs.val('image').change();
         };
         if (file)
             reader.readAsDataURL(file);
     });
+
+    $urlInput.on('input', function () {
+        const url = $(this).val() as string;
+        if (url.match(/^https?:.*\.(png|jpg|jpeg)$/)) {
+            setImage(url);
+            options.url = url;
+            $inputs.val('url').change();
+        }
+    })
 }
 
 function visibility(options: Visibility) {

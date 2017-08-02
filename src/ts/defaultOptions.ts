@@ -9,6 +9,7 @@ let options: Options = {
             def: 'color',
             color: '#a8a8a8',
             image: '',
+            url: 'http://i.imgur.com/v558H68.png',
         },
         visibility: {
             opacity: 100,

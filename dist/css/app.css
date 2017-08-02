@@ -129,16 +129,8 @@ body {
 .uk-accordion-content > * {
   margin-left: 30px;
 }
-#opt-background > label {
-  display: table-row;
+#opt-background > div:not(:last-child) {
   margin-bottom: 10px;
-  vertical-align: middle;
-}
-#opt-background > label > div {
-  display: table-cell;
-}
-#opt-background > label > input {
-  margin-right: 5px;
 }
 #opt-visibility div {
   margin-bottom: 5px;
@@ -150,10 +142,11 @@ body {
   margin-right: 10px;
 }
 #actions-info {
-  margin-top: 10px;
+  margin-bottom: 10px;
   text-align: center;
   color: white;
   font-size: 1.2rem;
+  height: 50px;
 }
 .title-container {
   display: none;

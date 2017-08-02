@@ -25,20 +25,8 @@
 }
 
 #opt-background {
-    > label {
-        display: table-row;
+    > div:not(:last-child) {
         margin-bottom: 10px;
-        vertical-align: middle;
-
-        > div {
-            display: table-cell;
-            //display: inline-block;
-        }
-
-        > input {
-            //display: table-cell;
-            margin-right: 5px;
-        }
     }
 }
 
@@ -59,8 +47,9 @@
 }
 
 #actions-info {
-    margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
     color: @global-color;
     font-size: 1.2rem;
+    height: 50px;
 }

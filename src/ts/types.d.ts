@@ -20,6 +20,7 @@ export interface Background {
     def: string,
     color: string,
     image: string,
+    url: string,
 }
 
 export interface Search {

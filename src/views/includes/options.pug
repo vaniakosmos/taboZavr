@@ -7,21 +7,27 @@ div#sidebar(uk-offcanvas="flip: true; overlay: false; mode: push")
                 h2.uk-accordion-title Appearance
                 div.uk-accordion-content
                     h5 Background
-                    form#opt-background
-                        label
-                            input.uk-radio(type="radio" name="background" value='color')
-                            div
-                                span Plain color
-                                br/
-                                input#bg-color-input(type="color" value="#ececec")
-                        label
-                            input.uk-radio(type="radio" name="background" value='image')
-                            div
-                                span Image
-                                br/
+                    form#opt-background.uk-form-stacked
+                        div
+                            label.uk-form-label(for='bg-color-input') select preferred bg
+                            div.uk-form-controls
+                                select.uk-select.uk-form-small(name="background")
+                                    option(value='color' selected) color
+                                    option(value='image') image
+                                    option(value='url') url
+                        div
+                            label.uk-form-label(for='bg-color-input') color
+                            div.uk-form-controls
+                                input#bg-color-input.uk-input.uk-form-small(type="color" value="#ececec")
+                        div
+                            label.uk-form-label(for='bg-color-input') image
+                            div.uk-form-controls
                                 input#bg-image-input(type="file" name="image-file" accept=".jpg, .jpeg, .png")
-                        // image from src
-                    // h5 Theme
+                        div
+                            label.uk-form-label(for='bg-color-input') url
+                            div.uk-form-controls
+                                input#bg-url-input.uk-input(value='http://i.imgur.com/uvFEcJN.jpg')
+
                     h5 Visibility
                     div#opt-visibility
                         div
@@ -40,11 +46,13 @@ div#sidebar(uk-offcanvas="flip: true; overlay: false; mode: push")
                 h3.uk-accordion-title Tabs
                 div.uk-accordion-content
                     | tabs
+
+        div#actions-info
         div#actions.gaped
             button#save-settings.uk-button.uk-button-primary.uk-button-small(type='button') save
             button#set-default.uk-button.uk-button-danger.uk-button-small(type='button' uk-toggle="target: #set-default-modal")
                 | set default
-        div#actions-info
+
         div#set-default-modal(uk-modal="stack: true")
             div.uk-modal-dialog.uk-modal-body
                 h2.uk-modal-title Set default options?
