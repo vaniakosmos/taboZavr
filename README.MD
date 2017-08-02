@@ -1,5 +1,8 @@
-# TobaZavr
+# TaboZavr
 Customisable Chrome extension for "new tab".
+
+## Usage
+Use `dist/` folder as extension root.
 
 ## Features
 
