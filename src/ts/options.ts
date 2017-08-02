@@ -49,7 +49,21 @@ function setActions(options) {
 function setUpTheme(theme: Theme) {
     logger.log('setting visibility and background..');
     visibility(theme.visibility);
-    background(theme.background)
+    background(theme.background);
+    title(theme);
+}
+
+function title(theme: Theme) {
+    const $titleInput = $('#title-input');
+
+    $('title').text(theme.title);
+    $titleInput.val(theme.title);
+
+    $titleInput.on('input', function () {
+        let title = $(this).val() as string;
+        theme.title = title;
+        $('title').text(title);
+    })
 }
 
 function background(options: Background) {
