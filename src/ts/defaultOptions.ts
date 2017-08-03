@@ -6,13 +6,13 @@ let options: Options = {
         title: 'New tab',
         header: 'hello ma dude',
         background: {
-            def: 'color',
-            color: '#a8a8a8',
+            def: 'url',
+            color: '#42a4a8',
             image: '',
-            url: 'http://i.imgur.com/v558H68.png',
+            url: 'http://i.imgur.com/hNmDF6p.png',
         },
         visibility: {
-            opacity: 100,
+            opacity: 50,
             revealOnHover: true,
         }
     },
@@ -39,7 +39,7 @@ let options: Options = {
         labelIsUrl: false,
     },
     tabs: {
-        def: 'Recent',
+        def: 'Fav',
         grid: {
             cols: 5,
             rows: 5,
