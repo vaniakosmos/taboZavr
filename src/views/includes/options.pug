@@ -24,14 +24,14 @@ div#sidebar(uk-offcanvas="flip: true; overlay: false; mode: push")
                             div.uk-form-controls
                                 select.uk-select.uk-form-small(name="background")
                                     option(value='color' selected) color
-                                    option(value='image') image
+                                    option(value='image') file
                                     option(value='url') url
                         div
                             label.uk-form-label(for='bg-color-input') color
                             div.uk-form-controls
                                 input#bg-color-input.uk-input.uk-form-small(type="color" value="#ececec")
                         div
-                            label.uk-form-label(for='bg-color-input') image
+                            label.uk-form-label(for='bg-color-input') file
                             div.uk-form-controls
                                 input#bg-image-input(type="file" name="image-file" accept=".jpg, .jpeg, .png")
                         div

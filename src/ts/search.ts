@@ -9,7 +9,7 @@ export function setUpSearch(searchOptions: Search) {
     const $searchInput = $('#search');
     const $searchButton = $('#search-btn');
     const $suggestions = $('#suggestions');
-    const typingInterval = 333;
+    const typingInterval = 250;
     let typingTimer;
 
     setUpEngines(searchOptions);
