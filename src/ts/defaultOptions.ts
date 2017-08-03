@@ -39,7 +39,7 @@ let options: Options = {
         labelIsUrl: false,
     },
     tabs: {
-        def: 'recent',
+        def: 'Recent',
         grid: {
             cols: 5,
             rows: 5,

@@ -61,34 +61,60 @@ div#sidebar(uk-offcanvas="flip: true; overlay: false; mode: push")
             li.uk-open
                 h3.uk-accordion-title Tabs
                 div.uk-accordion-content
-                    button.uk-button.uk-button-default.uk-button-small(type="button" uk-toggle="target: #opt-tabs-modal") set up
+                    button.uk-button.uk-button-default.uk-button-small(type="button" uk-toggle="target: #opt-tabs-modal")
+                        | set up tabs
 
 
         div#opt-search-modal(uk-modal="stack: true; bg-close: false")
             div.uk-modal-dialog.uk-modal-body(uk-overflow-auto)
                 h2.uk-modal-title Set up search engines
                 div.modal-desc
-                    | You can add, remove and rearrange search engines. Don't forget to save.
+                    | You can add, remove and rearrange search engines.
                     br/
                     | Names must be unique.
                     br/
-                    | Url must match pattern (#[code s] is optional, #[code *] is wildcard):  #[code http(s)://*?*=]
-
+                    | Url must match pattern:
+                    code http(s)://[site name]?[query name]=
                 div.uk-text-right.uk-margin-bottom
-                    button#opt-search-add.uk-button.uk-button-primary.uk-button-small(type="button" name="cancel") add field
+                    button#opt-search-add.uk-button.uk-button-primary.uk-button-small(type="button" name="cancel")
+                        | add field
                 div#opt-search-fields.modal-items(uk-sortable="handle: .uk-sortable-handle")
                     //- fields here
+                div#opt-search-error.modal-error
                 div.uk-text-right.gaped.modal-footer
                     button.uk-button.uk-button-default.uk-button-small.uk-modal-close(type="button" name="cancel") cancel
-                    button#opt-search-ok.uk-button.uk-button-danger.uk-button-small(type="button" name="ok") ok
+                    button#opt-search-save.uk-button.uk-button-danger.uk-button-small(type="button" name="ok") save
 
-        div#opt-tabs-modal(uk-modal="stack: true")
+        div#opt-tabs-modal(uk-modal="stack: true; bg-close: false")
             div.uk-modal-dialog.uk-modal-body(uk-overflow-auto)
                 h2.uk-modal-title Set up tabs
-                p bla bla tabs
-                p.uk-text-right.gaped
+                div.modal-desc
+                    | You can add, remove and rearrange tabs.
+                    br/
+                    | Names must be unique.
+                    br/
+                    | Source must match one of the following pattern:
+                    ul(style="margin-top: 0;")
+                        li #[code recent] - recently closed tabs
+                        li #[code top] - top sites
+                        li
+                            code bookmark:[folder](/[folder])*
+                            |
+                            | - path to bookmark folder. For example: #[code bookmark:path/to my/bookmarks]
+                div#opt-tabs-size.gaped
+                    span(class='uk-width-1-4@s') cols:
+                    input.uk-input(class='uk-width-1-4@s' placeholder='cols...' type='number' min='2' max='10')
+                    span(class='uk-width-1-4@s') rows:
+                    input.uk-input(class='uk-width-1-4@s' placeholder='rows...' type='number' min='2' max='10')
+                div.uk-text-right.uk-margin-bottom
+                    button#opt-tabs-add.uk-button.uk-button-primary.uk-button-small(type="button" name="cancel")
+                        | add field
+                div#opt-tabs-fields.modal-items(uk-sortable="handle: .uk-sortable-handle")
+                    //- fields here
+                div#opt-tabs-error.modal-error
+                div.uk-text-right.gaped.modal-footer
                     button.uk-button.uk-button-default.uk-button-small.uk-modal-close(type="button" name="cancel") cancel
-                    button.uk-button.uk-button-danger.uk-button-small(type="button" name="ok") ok
+                    button#opt-tabs-save.uk-button.uk-button-danger.uk-button-small(type="button" name="ok") save
 
         div#set-default-modal(uk-modal="stack: true")
             div.uk-modal-dialog.uk-modal-body

@@ -28,6 +28,9 @@ Use `dist/` folder as extension root.
     - search on engine label click
 - tabs
     - default tabs: favorites, top sites, recently closed tabs
+    - set default tab
+    - change list of tabs (available sources: bookmarks, top sites, recent tabs)
+    - change grid size
 
 
 ## todo
@@ -39,5 +42,3 @@ Use `dist/` folder as extension root.
 - search
     - google search suggestions
 - tabs
-    - set default tab
-    - change list of tabs (available sources: bookmarks, top sites, recent tabs)

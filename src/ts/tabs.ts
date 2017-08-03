@@ -20,11 +20,13 @@ export function setUpTabs(tabs: Tabs) {
     const $headers = $tabs.find('ul').eq(0);
     const $contents = $tabs.find('ul').eq(1);
 
+    $headers.html('');
+    $contents.html('');
 
     for (let tab of tabs.entities) {
         const header = headerTemplate({
             name: tab.name,
-            active: tab.name.toLowerCase() === tabs.def.toLowerCase(),
+            active: tab.name === tabs.def,
         });
         $headers.append(header);
         const $content = $('<li>');
@@ -42,12 +44,14 @@ export function setUpTabs(tabs: Tabs) {
     }
 }
 
-function addTile($content: JQuery, data: TitleUrl) {
+function addTile($content: JQuery, data: TitleUrl, cols: number) {
     const $tile = $(tileTemplate({
         favicon: `chrome://favicon/size/16@2x/${data.url}`,
         title: data.title,
         url: decodeURIComponent(data.url)
     }));
+
+    $tile.css('width', `calc(100%/${cols} - 23px)`);
 
     if (data.url.startsWith('chrome')) {
         $tile.click(openLinkFunc(data.url));
@@ -71,7 +75,7 @@ function traverse(tree: BookmarkTreeNode, path: string[]): BookmarkTreeNode {
 function setUpTop($content: JQuery, {rows, cols}) {
     chrome.topSites.get(function (urls) {
         for (let i = 0; i < urls.length && i < rows * cols; i++) {
-            addTile($content, urls[i]);
+            addTile($content, urls[i], cols);
         }
     });
 }
@@ -80,13 +84,14 @@ function setUpRecent($content: JQuery, {rows, cols}) {
     chrome.sessions.getRecentlyClosed(function (sessions) {
         for (let i = 0; i < sessions.length && i < rows * cols; i++) {
             if (sessions[i].tab)
-                addTile($content, sessions[i].tab as TitleUrl);
+                addTile($content, sessions[i].tab as TitleUrl, cols);
         }
     })
 }
 
 function setUpBookmarks(tab: Tab, $content: JQuery, {rows, cols}) {
     if (!tab.src.startsWith('bookmark:')) return;
+    tab.src = tab.src.replace(/\/$/, '');  // delete trailing slash if present
     const path = tab.src.replace(/^bookmark:/, '').split('/');
     chrome.bookmarks.getTree(function (tree) {
         const bookmarkTree = tree[0];
@@ -97,7 +102,7 @@ function setUpBookmarks(tab: Tab, $content: JQuery, {rows, cols}) {
             for (let i = 0; i < folder.children.length && i < rows * cols; i++) {
                 const bookmark = folder.children[i];
                 if (!bookmark.children) {
-                    addTile($content, bookmark as TitleUrl);
+                    addTile($content, bookmark as TitleUrl, cols);
                 }
             }
         }

@@ -147,7 +147,7 @@ body {
 #opt-visibility div input[type="checkbox"] {
   margin-right: 5px;
 }
-.gaped > button:not(:last-child) {
+.gaped > *:not(:last-child) {
   margin-right: 10px;
 }
 #actions-info {
@@ -168,6 +168,11 @@ body {
 }
 .modal-items > div button[uk-close] {
   margin-left: 10px;
+}
+.modal-error {
+  margin-top: 30px;
+  text-align: center;
+  color: #f0506e;
 }
 .modal-footer {
   margin-top: 30px;
