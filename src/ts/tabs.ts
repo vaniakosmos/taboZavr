@@ -51,7 +51,7 @@ function addTile($content: JQuery, data: TitleUrl, cols: number) {
         url: decodeURIComponent(data.url)
     }));
 
-    $tile.css('width', `calc(100%/${cols} - 23px)`);
+    $tile.css('width', `calc(100%/${cols} - 22px)`);
 
     if (data.url.startsWith('chrome')) {
         $tile.click(openLinkFunc(data.url));

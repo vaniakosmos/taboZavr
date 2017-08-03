@@ -1,9 +1,9 @@
 html,
 body {
-  height: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
+  height: 100vh;
+  overflow: auto;
   background-size: cover;
+  background: #20201f no-repeat center center;
 }
 body {
   margin: 0;
@@ -85,7 +85,6 @@ body {
   padding: 10px 10px 20px 10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
 }
 #apps > li {
   text-align: center;
@@ -93,7 +92,7 @@ body {
   display: inline-block;
   padding: 5px;
   height: 87px;
-  width: 100px;
+  width: 110px;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -233,6 +232,9 @@ body {
   background: none;
   width: 60%;
   margin: 3rem auto 0 auto;
+}
+#tabs {
+  text-align: left;
 }
 .uk-tab {
   background: rgba(58, 58, 58, 0.91);
