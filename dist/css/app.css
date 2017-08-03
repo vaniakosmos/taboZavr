@@ -228,6 +228,28 @@ body {
   border-radius: 3px;
   border: 1px dotted transparent;
 }
+#suggestions {
+  background: white;
+  padding: 0;
+  position: absolute;
+  z-index: 900;
+  border-radius: 3px;
+  width: 100%;
+}
+#suggestions a {
+  text-align: left;
+  color: black;
+  display: block;
+  padding: 5px 12px;
+  border-radius: 3px;
+}
+#suggestions a:hover {
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.05);
+}
+#suggestions:empty {
+  display: none;
+}
 .tabs-container {
   background: none;
   width: 60%;

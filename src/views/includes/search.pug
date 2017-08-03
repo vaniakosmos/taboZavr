@@ -1,8 +1,10 @@
 div.search-container.uk-card.uk-card-body.uk-card-default.uk-border-rounded.hidable
-    div.uk-margin
+    div.uk-margin(style='position: relative;')
         form#engines
             //- engines here
         form.uk-inline
             label
                 a#search-btn.uk-form-icon.uk-form-icon-flip(uk-icon="icon: search")
                 input#search.uk-input.uk-form-width-large.uk-border-rounded(placeholder="search...")
+        div#suggestions
+            //- links

@@ -22,10 +22,10 @@ Use `dist/` folder as extension root.
         - change opacity of search and tab panels
         - option to reveal panels on hover
 - search
+    - google search suggestions
     - default search engines: google, google-images, trakt, wiki
     - set default search engine
     - change list of search engines (add/remove/rearrange)
-    - search on engine label click
 - tabs
     - default tabs: favorites, top sites, recently closed tabs
     - set default tab
@@ -37,8 +37,6 @@ Use `dist/` folder as extension root.
 
 - appearance
     - background
-        - option for automatic matching color with chrome theme
         - random image from specified source (flickr?) changed with some period
 - search
-    - google search suggestions
 - tabs

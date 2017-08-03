@@ -371,6 +371,7 @@ function visibility(options: Visibility) {
     const $hover = $block.find('div').eq(1);
     const $opacityInput = $opacity.find('input');
     const $hoverInput = $hover.find('input');
+    const $hidable = $('.hidable');
 
     $opacityInput.on('change mousemove', function () {
         const val = $(this).val() as number;
@@ -383,12 +384,21 @@ function visibility(options: Visibility) {
         options.revealOnHover = $(this).prop('checked');
     });
 
-    $('.hidable').hover(function () {
+    $hidable.hover(function () {
         if ($hoverInput.is(':checked')) {
             $(this).addClass('visible');
         }
     }, function () {
-        $(this).removeClass('visible');
+        if (!$(this).find('input').is(":focus")) {
+            $(this).removeClass('visible');
+        }
+    });
+
+    $hidable.find('input').focusout(function () {
+        const parent = $(this).closest('.hidable');
+        if (!parent.is(':hover')) {
+            parent.removeClass('visible');
+        }
     });
 
     $opacityInput.val(options.opacity).trigger('change');
