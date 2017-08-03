@@ -5,6 +5,10 @@ Customisable Chrome extension for "new tab".
 ## Usage
 Use `dist/` folder as extension root.
 
+## Sreenshots
+
+[boop](screenshots/screenshots.md)
+
 
 ## Features
 
