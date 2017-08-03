@@ -75,17 +75,22 @@ function searchOptions(allOptions: Options) {
         $fieldsContainer.append($html);
     }
 
-    options.engines.forEach(function (engine) {
-        addField(engine)
-    });
+    $('#opt-search-open').click(function () {
+        $fieldsContainer.html('');  // clear
+        $error.text('');
 
-    $('#opt-search-add').click(function () {
-        addField({name: '', url: ''})
-    });
+        options.engines.forEach(function (engine) {
+            addField(engine)
+        });
 
-    $fieldsContainer
-        .find(`input[name="default-engine"][value="${options.def}"]`)
-        .prop('checked', true);
+        $('#opt-search-add').click(function () {
+            addField({name: '', url: ''})
+        });
+
+        $fieldsContainer
+            .find(`input[name="default-engine"][value="${options.def}"]`)
+            .prop('checked', true);
+    });
 
     $('#opt-search-save').click(function () {
         const names = new Set();
@@ -161,23 +166,29 @@ function tabsOptions(allOptions: Options) {
         $fieldsContainer.append($html);
     }
 
-    $sizeInputs.eq(0).val(options.grid.cols);
-    $sizeInputs.eq(1).val(options.grid.rows);
     $sizeInputs.on('input', function () {
         $(this).removeClass('uk-form-danger');
     });
 
-    options.entities.forEach(function (tab) {
-        addField(tab)
-    });
+    $('#opt-tabs-open').click(function () {
+        $fieldsContainer.html('');
+        $error.html('');
 
-    $('#opt-tabs-add').click(function () {
-        addField({name: '', src: ''})
-    });
+        $sizeInputs.eq(0).val(options.grid.cols);
+        $sizeInputs.eq(1).val(options.grid.rows);
 
-    $fieldsContainer
-        .find(`input[name="default-tab"][value="${options.def}"]`)
-        .prop('checked', true);
+        options.entities.forEach(function (tab) {
+            addField(tab)
+        });
+
+        $('#opt-tabs-add').click(function () {
+            addField({name: '', src: ''})
+        });
+
+        $fieldsContainer
+            .find(`input[name="default-tab"][value="${options.def}"]`)
+            .prop('checked', true);
+    });
 
     $('#opt-tabs-save').click(function () {
         const names = new Set();
